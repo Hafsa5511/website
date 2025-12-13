@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en-CA">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ysabeau+Infant:ital,wght@0,1..1000;1,1..1000&display=swap" rel="stylesheet">
+
+    <title>Project Name - Hafsa Abbasi</title>
+    <style>
+      * {
+        cursor: none !important;
+      }
+
+      /* Main cursor dot */
+      .custom-cursor {
+        position: fixed;
+        width: 8px;
+        height: 8px;
+        background: rgba(255, 215, 0, 0.9);
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 10000;
+        transition: transform 0.15s ease-out, opacity 0.15s ease-out;
+        box-shadow: 0 0 15px rgba(255, 215, 0, 0.6),
+          0 0 25px rgba(255, 215, 0, 0.3);
+      }
+
+      /* Outer ring */
+      .cursor-ring {
+        position: fixed;
+        width: 40px;
+        height: 40px;
+        border: 1px solid rgba(255, 215, 0, 0.4);
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 9999;
+        transition: all 0.2s ease-out;
+        box-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
+      }
+
+      /* Sparkle trail */
+      .cursor-sparkle {
+        position: fixed;
+        width: 4px;
+        height: 4px;
+        background: rgba(255, 215, 0, 0.8);
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 9998;
+        animation: sparkle-fade 0.8s ease-out forwards;
+        box-shadow: 0 0 8px rgba(255, 215, 0, 0.6);
+      }
+
+      @keyframes sparkle-fade {
+        0% {
+          opacity: 1;
+          transform: scale(1);
+        }
+
+        100% {
+          opacity: 0;
+          transform: scale(0.3);
+        }
+      }
+
+      .cursor-ring.hover {
+        width: 60px;
+        height: 60px;
+        border-color: rgba(255, 215, 0, 0.7);
+        border-width: 2px;
+      }
+
+      .custom-cursor.hover {
+        transform: scale(0.6);
+        background: rgba(255, 215, 0, 1);
+      }
+
+      #starfield {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        pointer-events: none;
+      }
+
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: #000;
+        color: #fff;
+        font-family: 'Ysabeau Infant', sans-serif;
+        position: relative;
+        min-height: 100vh;
+      }
+
+      .page-wrapper {
+        width: 1440px;
+        margin: 0 auto;
+        position: relative;
+      }
+
+      .container {
+        width: 1200px;
+        margin: 0 auto;
+        padding: 0;
+      }
+
+      @font-face {
+        font-family: 'TheScientist';
+        src: url('TheScientist-L3EyW.ttf') format('truetype');
+      }
+
+      /* Close Button */
+      .close-btn {
+        position: fixed;
+        top: 40px;
+        right: 60px;
+        font-size: 40px;
+        color: rgba(255, 169, 88, 1);
+        text-decoration: none;
+        z-index: 100;
+        transition: transform 0.3s, color 0.3s;
+        font-weight: 300;
+      }
+
+      .close-btn:hover {
+        transform: rotate(90deg);
+        color: rgba(255, 215, 0, 1);
+      }
+
+      /* Project Content */
+      .project-content {
+        padding: 150px 0 100px 0;
+      }
+
+      .project-header {
+        margin-bottom: 80px;
+      }
+
+      .project-title {
+        font-family: 'TheScientist', cursive;
+        font-size: 60px;
+        color: rgba(255, 169, 88, 1);
+        margin-bottom: 20px;
+      }
+
+      .project-meta {
+        font-size: 18px;
+        color: rgba(255, 169, 88, 0.7);
+        margin-bottom: 40px;
+      }
+
+      .project-description {
+        font-size: 16px;
+        line-height: 2.5;
+        letter-spacing: 0.3px;
+        max-width: 800px;
+        margin-bottom: 80px;
+      }
+
+      /* Project Images */
+      .project-image-section {
+        margin-bottom: 80px;
+      }
+
+      .project-image {
+        width: 600px;
+        height: auto;
+        border-radius: 30px;
+        margin-bottom: 40px;
+      }
+
+      .image-caption {
+        font-size: 14px;
+        color: rgba(255, 169, 88, 0.7);
+        font-style: italic;
+        margin-bottom: 60px;
+      }
+
+      .section-title {
+        font-family: 'Ysabeau Infant', sans-serif;
+        font-size: 40px;
+        color: rgba(255, 169, 88, 1);
+        margin-bottom: 40px;
+        margin-top: 80px;
+      }
+
+      .two-column-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px;
+        margin-bottom: 60px;
+      }
+
+      .grid-image {
+        width: 100%;
+        height: auto;
+        border-radius: 20px;
+      }
+
+      a {
+
+        color: rgba(255, 169, 88, 0.7);
+
+      }
+
+      a:hover {
+        color: white;
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+
+  <body>
+    <canvas id="starfield"></canvas>
+
+    <div class="custom-cursor"></div>
+    <div class="cursor-ring"></div>
+
+    <a href="index.html" class="close-btn">✕</a>
+
+    <div class="page-wrapper">
+      <div class="container project-content">
+
+        <div class="project-header">
+          <h1 class="project-title">Website Redesign</h1>
+          <p class="project-meta">2025 • Website • Figma</p>
+          <div class="project-description">
+            <p>Redesigned the Alice’s Village Café website in Figma, reworking the UX/UI, layout, and visual style to better align with the café’s goals and brand identity.</p>
+
+            <p>
+              <a href="https://www.figma.com/proto/dChQi4WSLbYmAmgKNBIswi/Assignment-2--Website-Redesign-and-Prototyping?node-id=2-111&p=f&t=eUAaDuhOvnlq6Ftp-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1">View prototype</a>
+            </p>
+
+            <a href="https://www.figma.com/design/dChQi4WSLbYmAmgKNBIswi/Assignment-2--Website-Redesign-and-Prototyping?node-id=0-1&t=IVcDYocfXkT5B6uB-1">View Figma file</a>
+            </p>
+
+          </div>
+        </div>
+
+        <!-- Main Project Image -->
+        <div class="project-image-section">
+          <video class="project-image" controls autoplay muted loop>
+            <source src="ezyZip.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+          <p class="image-caption">Project video showcasing the redesign process and final outcome</p>
+
+        </div>
+
+        <!-- Section with title -->
+        <h2 class="section-title">Process</h2>
+        <div class="project-description">
+
+        </div>
+
+        <!-- Two column grid for process images -->
+        <div class="two-column-grid">
+          <img src="Screenshot 2025-12-12 230820.png" alt="Process step 1" class="grid-image">
+        </div>
+
+      </div>
+    </div>
+
+    <script>
+      const cursor = document.querySelector('.custom-cursor');
+      const cursorRing = document.querySelector('.cursor-ring');
+      let mouseX = 0;
+      let mouseY = 0;
+      let ringX = 0;
+      let ringY = 0;
+
+      document.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+
+        cursor.style.left = mouseX + 'px';
+        cursor.style.top = mouseY + 'px';
+
+        if (Math.random() > 0.85) {
+          createSparkle(mouseX, mouseY);
+        }
+      });
+
+      function animateRing() {
+        ringX += (mouseX - ringX) * 0.15;
+        ringY += (mouseY - ringY) * 0.15;
+
+        cursorRing.style.left = (ringX - 20) + 'px';
+        cursorRing.style.top = (ringY - 20) + 'px';
+
+        requestAnimationFrame(animateRing);
+      }
+      animateRing();
+
+      function createSparkle(x, y) {
+        const sparkle = document.createElement('div');
+        sparkle.className = 'cursor-sparkle';
+        sparkle.style.left = x + 'px';
+        sparkle.style.top = y + 'px';
+        document.body.appendChild(sparkle);
+
+        setTimeout(() => sparkle.remove(), 800);
+      }
+
+      const interactiveElements = document.querySelectorAll('a, button');
+
+      interactiveElements.forEach(el => {
+        el.addEventListener('mouseenter', () => {
+          cursor.classList.add('hover');
+          cursorRing.classList.add('hover');
+        });
+
+        el.addEventListener('mouseleave', () => {
+          cursor.classList.remove('hover');
+          cursorRing.classList.remove('hover');
+        });
+      });
+    </script>
+
+    <script>
+      // Starfield animation
+      const canvas = document.getElementById('starfield');
+      const ctx = canvas.getContext('2d');
+
+      let stars = [];
+      let shootingStars = [];
+      let scrollY = 0;
+
+      function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        initStars();
+      }
+
+      function initStars() {
+        stars = [];
+        const numStars = 400;
+
+        for (let i = 0; i < numStars; i++) {
+          const rand = Math.random();
+          let size;
+          if (rand < 0.7) {
+            size = Math.random() * 0.8 + 0.3;
+          } else if (rand < 0.9) {
+            size = Math.random() * 1.2 + 0.8;
+          } else {
+            size = Math.random() * 1.8 + 1.2;
+          }
+
+          stars.push({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height * 3,
+            size: size,
+            speed: Math.random() * 0.5 + 0.1,
+            brightness: Math.random() * 0.3 + 0.25,
+            twinkle: Math.random() * Math.PI * 2,
+            twinkleSpeed: Math.random() * 0.02 + 0.01
+          });
+        }
+      }
+
+      function createShootingStar() {
+        const side = Math.random();
+        let startX, startY, endX, endY;
+
+        if (side < 0.5) {
+          startX = Math.random() * canvas.width * 0.3;
+          startY = Math.random() * canvas.height * 0.3;
+          endX = startX + 200 + Math.random() * 300;
+          endY = startY + 200 + Math.random() * 300;
+        } else {
+          startX = canvas.width * 0.7 + Math.random() * canvas.width * 0.3;
+          startY = Math.random() * canvas.height * 0.3;
+          endX = startX - 200 - Math.random() * 300;
+          endY = startY + 200 + Math.random() * 300;
+        }
+
+        shootingStars.push({
+          x: startX,
+          y: startY,
+          endX: endX,
+          endY: endY,
+          progress: 0,
+          speed: 0.015 + Math.random() * 0.01,
+          opacity: 1
+        });
+      }
+
+      function drawShootingStars() {
+        shootingStars.forEach((star, index) => {
+          star.progress += star.speed;
+
+          if (star.progress > 1) {
+            star.opacity -= 0.05;
+          }
+
+          if (star.opacity <= 0) {
+            shootingStars.splice(index, 1);
+            return;
+          }
+
+          const currentX = star.x + (star.endX - star.x) * star.progress;
+          const currentY = star.y + (star.endY - star.y) * star.progress;
+
+          const tailX = currentX - (star.endX - star.x) * 0.05;
+          const tailY = currentY - (star.endY - star.y) * 0.05;
+
+          const gradient = ctx.createLinearGradient(tailX, tailY, currentX, currentY);
+          gradient.addColorStop(0, `rgba(255, 255, 255, 0)`);
+          gradient.addColorStop(0.5, `rgba(255, 255, 255, ${0.3 * star.opacity})`);
+          gradient.addColorStop(1, `rgba(255, 255, 255, ${0.8 * star.opacity})`);
+
+          ctx.beginPath();
+          ctx.moveTo(tailX, tailY);
+          ctx.lineTo(currentX, currentY);
+          ctx.strokeStyle = gradient;
+          ctx.lineWidth = 2;
+          ctx.stroke();
+
+          ctx.beginPath();
+          ctx.arc(currentX, currentY, 2, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(255, 255, 255, ${star.opacity})`;
+          ctx.shadowBlur = 10;
+          ctx.shadowColor = '#fff';
+          ctx.fill();
+          ctx.shadowBlur = 0;
+        });
+      }
+
+      function drawStars() {
+        ctx.fillStyle = '#000';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        stars.forEach(star => {
+          const yPos = (star.y - scrollY * star.speed) % (canvas.height + 500);
+
+          star.twinkle += star.twinkleSpeed;
+          const twinkleFactor = 0.8 + Math.sin(star.twinkle) * 0.2;
+
+          ctx.beginPath();
+          ctx.arc(star.x, yPos, star.size, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(255, 255, 255, ${star.brightness * twinkleFactor})`;
+          ctx.fill();
+
+          if (star.size > 1) {
+            ctx.shadowBlur = 4 * twinkleFactor;
+            ctx.shadowColor = '#fff';
+            ctx.fill();
+            ctx.shadowBlur = 0;
+          }
+        });
+
+        drawShootingStars();
+      }
+
+      function animate() {
+        drawStars();
+        requestAnimationFrame(animate);
+      }
+
+      window.addEventListener('scroll', () => {
+        scrollY = window.scrollY;
+      });
+
+      window.addEventListener('resize', resizeCanvas);
+
+      resizeCanvas();
+      animate();
+
+      setInterval(() => {
+        if (Math.random() > 0.3) {
+          createShootingStar();
+        }
+      }, 8000);
+    </script>
+
+  </body>
+</html>
