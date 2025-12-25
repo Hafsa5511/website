@@ -202,23 +202,23 @@
         margin-top: 80px;
       }
 
-      .two-column-grid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 40px;
-        margin-bottom: 60px;
+       .two-column-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        margin-bottom: 10px;
+        justify-content: flex-start;
       }
 
       .grid-image {
-        width: 100%;
-        height: auto;
-        border-radius: 20px;
+        height: 600px;
+        width: auto;
+        border-radius: 10px;
+        flex-shrink: 0;
       }
 
       a {
-
         color: rgba(255, 169, 88, 0.7);
-
       }
 
       a:hover {
@@ -290,12 +290,13 @@
           <h1 class="project-title">Website Redesign</h1>
           <p class="project-meta">2025 • Website • Figma</p>
           <div class="project-description">
-            <p>Redesigned the Alice’s Village Café website in Figma, reworking the UX/UI, layout, and visual style to better align with the café’s goals and brand identity.</p>
+            <p>Redesigned the Alice's Village Café website in Figma, reworking the UX/UI, layout, and visual style to better align with the café's goals and brand identity.</p>
 
             <p>
               <a href="https://www.figma.com/proto/dChQi4WSLbYmAmgKNBIswi/Assignment-2--Website-Redesign-and-Prototyping?node-id=2-111&p=f&t=eUAaDuhOvnlq6Ftp-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1">View prototype</a>
             </p>
 
+            <p>
             <a href="https://www.figma.com/design/dChQi4WSLbYmAmgKNBIswi/Assignment-2--Website-Redesign-and-Prototyping?node-id=0-1&t=IVcDYocfXkT5B6uB-1">View Figma file</a>
             </p>
 
@@ -317,12 +318,14 @@
         <div class="project-description">
 
         </div>
-
         <!-- Two column grid for process images -->
         <div class="two-column-grid">
-          <img src="Screenshot 2025-12-12 230820.png" alt="Process step 1" class="grid-image">
+          <img src="home.png" alt="Process step 1" class="grid-image">
+          <img src="menu.png" alt="Process step 2" class="grid-image">
+          <img src="drinks.png" alt="Process step 3" class="grid-image">
+          <img src="events.png" alt="Process step 4" class="grid-image">
+          <img src="maps.png" alt="Process step 5" class="grid-image">
         </div>
-
       </div>
     </div>
 
