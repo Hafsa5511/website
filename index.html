@@ -35,7 +35,7 @@
 
       .page-wrapper { max-width:1200px; margin:0 auto; padding:0 60px 100px; }
 
-      /* HERO */
+      /* ── HERO ── */
       .hero {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -48,20 +48,16 @@
 
       .project-title { font-family:'TheScientist',cursive; font-size:52px; color:rgba(255,169,88,1); margin-bottom:14px; line-height:1.1; }
       .project-meta { font-size:13px; color:rgba(255,169,88,0.55); margin-bottom:28px; letter-spacing:0.5px; }
-      .hero-intro { font-size:16px; line-height:2; color:rgba(255,255,255,0.8); margin-bottom:36px; }
+      .hero-intro { font-size:16px; line-height:2; color:rgba(255,255,255,0.8); margin-bottom:24px; }
 
-      .project-links { display:flex; gap:20px; margin-bottom:36px; flex-wrap:wrap; }
+      .project-links { display:flex; gap:16px; margin-bottom:32px; flex-wrap:wrap; }
       .project-link {
-        display: inline-flex; align-items: center; gap: 8px;
-        padding: 10px 22px;
-        border: 1px solid rgba(255,169,88,0.4);
-        border-radius: 100px;
-        color: rgba(255,169,88,0.9);
-        text-decoration: none;
-        font-size: 13px;
-        letter-spacing: 0.5px;
-        transition: all 0.3s ease;
-        backdrop-filter: blur(4px);
+        display:inline-flex; align-items:center; gap:8px;
+        padding:10px 22px;
+        border:1px solid rgba(255,169,88,0.4); border-radius:100px;
+        color:rgba(255,169,88,0.9); text-decoration:none;
+        font-size:13px; letter-spacing:0.5px;
+        transition:all 0.3s ease;
       }
       .project-link:hover { border-color:rgba(255,215,0,0.8); color:rgba(255,215,0,1); background:rgba(255,215,0,0.05); }
       .project-link svg { width:14px; height:14px; }
@@ -70,62 +66,89 @@
       .role-item label { display:block; font-size:11px; text-transform:uppercase; letter-spacing:2px; color:rgba(255,169,88,0.55); margin-bottom:4px; }
       .role-item span { font-size:13px; color:rgba(255,255,255,0.75); line-height:1.6; }
 
-      /* Video */
-      .hero-video {
-        border-radius: 20px;
-        overflow: hidden;
-        border: 1px solid rgba(255,169,88,0.15);
-        box-shadow: 0 0 60px rgba(255,169,88,0.08);
-      }
+      /* Video — native controls on */
+      .hero-video { border-radius:20px; overflow:hidden; border:1px solid rgba(255,169,88,0.15); box-shadow:0 30px 80px rgba(0,0,0,0.7),0 0 60px rgba(255,169,88,0.06); }
       .hero-video video { width:100%; display:block; }
 
-      /* SECTION */
+      /* ── SECTIONS ── */
       .section-divider { border:none; border-top:1px solid rgba(255,169,88,0.12); margin:0; }
       .content-section { padding:80px 0; }
       .section-label { font-family:'TheScientist',cursive; font-size:12px; text-transform:uppercase; letter-spacing:3px; color:rgba(255,169,88,0.45); margin-bottom:12px; }
       .section-title { font-family:'TheScientist',cursive; font-size:36px; color:rgba(255,169,88,1); margin-bottom:32px; }
-      .section-body { font-size:16px; line-height:2; color:rgba(255,255,255,0.8); max-width:640px; margin-bottom:48px; }
+      .section-body { font-size:16px; line-height:2; color:rgba(255,255,255,0.75); margin-bottom:40px; max-width:700px; }
 
-      /* TALL IMAGE SCROLL STRIP */
-      .screens-scroll {
-        display: flex;
+      /* ── PROBLEM / CONTEXT — two-col text ── */
+      .two-col-text {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+      }
+      .text-block h3 {
+        font-family: 'TheScientist', cursive;
+        font-size: 18px;
+        color: rgba(255,169,88,0.9);
+        margin-bottom: 14px;
+      }
+      .text-block p {
+        font-size: 15px;
+        line-height: 2;
+        color: rgba(255,255,255,0.65);
+      }
+
+      /* ── DESIGN DECISIONS cards ── */
+      .decisions-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
         gap: 20px;
-        overflow-x: auto;
-        padding-bottom: 20px;
-        scroll-snap-type: x mandatory;
-        -webkit-overflow-scrolling: touch;
-        cursor: grab !important;
       }
-      .screens-scroll:active { cursor: grabbing !important; }
-      .screens-scroll::-webkit-scrollbar { height: 4px; }
-      .screens-scroll::-webkit-scrollbar-track { background: rgba(255,255,255,0.05); border-radius:4px; }
-      .screens-scroll::-webkit-scrollbar-thumb { background: rgba(255,169,88,0.4); border-radius:4px; }
-
-      .screen-item {
-        flex-shrink: 0;
-        scroll-snap-align: start;
-        height: 640px;
-        width: auto;
+      .decision-card {
+        padding: 28px;
+        border: 1px solid rgba(255,169,88,0.12);
         border-radius: 16px;
-        overflow: hidden;
-        border: 1px solid rgba(255,169,88,0.15);
-        box-shadow: 0 8px 40px rgba(0,0,0,0.5);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-        cursor: zoom-in !important;
+        background: rgba(255,169,88,0.02);
+        transition: border-color 0.3s, background 0.3s, transform 0.3s;
       }
-      .screen-item:hover { transform: translateY(-6px); box-shadow: 0 20px 60px rgba(0,0,0,0.7); }
-      .screen-item img { height: 100%; width: auto; display: block; }
+      .decision-card:hover { border-color:rgba(255,169,88,0.3); background:rgba(255,169,88,0.04); transform:translateY(-4px); }
+      .decision-num {
+        font-family: 'TheScientist', cursive;
+        font-size: 32px;
+        color: rgba(255,169,88,0.15);
+        line-height: 1;
+        margin-bottom: 12px;
+      }
+      .decision-name { font-size:15px; font-weight:600; color:rgba(255,169,88,0.9); margin-bottom:8px; }
+      .decision-desc { font-size:14px; line-height:1.9; color:rgba(255,255,255,0.6); }
 
-      .scroll-hint {
-        display: flex; align-items: center; gap: 8px;
-        font-size: 12px; color: rgba(255,169,88,0.4);
-        letter-spacing: 1px; text-transform: uppercase;
-        margin-bottom: 20px;
-      }
-      .scroll-hint-arrow { animation: hint-slide 1.5s ease-in-out infinite; }
+      /* ── SCREENS HORIZONTAL SCROLL ── */
+      .scroll-hint { display:flex; align-items:center; gap:8px; font-size:12px; color:rgba(255,169,88,0.4); letter-spacing:1px; text-transform:uppercase; margin-bottom:20px; }
+      .scroll-hint-arrow { animation:hint-slide 1.5s ease-in-out infinite; }
       @keyframes hint-slide { 0%,100%{transform:translateX(0);} 50%{transform:translateX(6px);} }
 
-      /* LIGHTBOX */
+      .screens-scroll {
+        display:flex; gap:20px;
+        overflow-x:auto; padding-bottom:20px;
+        scroll-snap-type:x mandatory;
+        -webkit-overflow-scrolling:touch;
+        cursor:grab !important;
+      }
+      .screens-scroll:active { cursor:grabbing !important; }
+      .screens-scroll::-webkit-scrollbar { height:4px; }
+      .screens-scroll::-webkit-scrollbar-track { background:rgba(255,255,255,0.05); border-radius:4px; }
+      .screens-scroll::-webkit-scrollbar-thumb { background:rgba(255,169,88,0.4); border-radius:4px; }
+
+      .screen-item {
+        flex-shrink:0; scroll-snap-align:start;
+        height:640px; width:auto;
+        border-radius:16px; overflow:hidden;
+        border:1px solid rgba(255,169,88,0.15);
+        box-shadow:0 8px 40px rgba(0,0,0,0.5);
+        transition:transform 0.3s,box-shadow 0.3s;
+        cursor:zoom-in !important;
+      }
+      .screen-item:hover { transform:translateY(-6px); box-shadow:0 20px 60px rgba(0,0,0,0.7); }
+      .screen-item img { height:100%; width:auto; display:block; }
+
+      /* ── LIGHTBOX ── */
       .lightbox { position:fixed; inset:0; background:rgba(0,0,0,0.93); z-index:99999; display:flex; align-items:center; justify-content:center; opacity:0; pointer-events:none; transition:opacity 0.3s ease; backdrop-filter:blur(10px); }
       .lightbox.active { opacity:1; pointer-events:all; }
       .lightbox img { max-width:90vw; max-height:90vh; border-radius:12px; box-shadow:0 40px 100px rgba(0,0,0,0.8); transform:scale(0.96); transition:transform 0.3s ease; object-fit:contain; cursor:zoom-out !important; }
@@ -146,9 +169,10 @@
       <!-- HERO -->
       <div class="hero">
         <div>
-          <h1 class="project-title">Website<br>Redesign</h1>
+          <h1 class="project-title">Alice's Café<br>Website Redesign</h1>
           <p class="project-meta">2025 &nbsp;·&nbsp; UX/UI &nbsp;·&nbsp; Figma</p>
-          <p class="hero-intro">Redesigned the Alice's Village Café website in Figma, reworking the UX/UI, layout, and visual style to better align with the café's goals and brand identity.</p>
+          <p class="hero-intro">A full redesign of the Alice's Village Café website — reworking information architecture, visual hierarchy, and brand identity to better serve both the café's customers and its personality.</p>
+          <p class="hero-intro" style="margin-top:-8px;">The goal was to move from a cluttered, inconsistent layout to something warm, readable, and easy to navigate across all five pages.</p>
 
           <div class="project-links">
             <a href="https://www.figma.com/proto/dChQi4WSLbYmAmgKNBIswi/Assignment-2--Website-Redesign-and-Prototyping?node-id=2-111&p=f&t=eUAaDuhOvnlq6Ftp-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1" class="project-link" target="_blank">
@@ -164,16 +188,77 @@
           <div class="project-role">
             <div class="role-item"><label>Role</label><span>UX/UI Design · Prototyping</span></div>
             <div class="role-item"><label>Tools</label><span>Figma</span></div>
-            <div class="role-item"><label>Year</label><span>2025</span></div>
+            <div class="role-item"><label>Pages</label><span>5 (Home, Menu, Drinks, Events, Location)</span></div>
             <div class="role-item"><label>Context</label><span>School Assignment</span></div>
           </div>
         </div>
 
-        <!-- Video right side -->
+        <!-- Video — controls preserved -->
         <div class="hero-video">
-          <video autoplay muted loop playsinline>
+          <video controls autoplay muted loop playsinline>
             <source src="ezyZip.mp4" type="video/mp4">
           </video>
+        </div>
+      </div>
+
+      <hr class="section-divider">
+
+      <!-- THE PROBLEM -->
+      <div class="content-section">
+        <p class="section-label">Context</p>
+        <h2 class="section-title">The Problem</h2>
+        <p class="section-body">The original Alice's Village Café site lacked visual consistency and made it difficult for users to find key information quickly. The redesign addressed both the UX structure and the visual language.</p>
+
+        <div class="two-col-text">
+          <div class="text-block">
+            <h3>Before</h3>
+            <p>Inconsistent typography and colour usage across pages. No clear visual hierarchy to guide users. Navigation felt disconnected and menus were hard to scan. The overall aesthetic didn't reflect the warmth of the café brand.</p>
+          </div>
+          <div class="text-block">
+            <h3>After</h3>
+            <p>A unified design system with consistent type, spacing, and colour throughout. Clear page structure with obvious entry points for each content area. Navigation is simplified and prominent. Brand identity is warm, inviting, and cohesive.</p>
+          </div>
+        </div>
+      </div>
+
+      <hr class="section-divider">
+
+      <!-- DESIGN DECISIONS -->
+      <div class="content-section">
+        <p class="section-label"></p>
+        <h2 class="section-title">Design Decisions</h2>
+
+        <div class="decisions-grid">
+          <div class="decision-card">
+            <div class="decision-num">01</div>
+            <p class="decision-name">Visual Hierarchy First</p>
+            <p class="decision-desc">Each page was structured so the most important content — the menu, hours, and location — is immediately visible without scrolling.</p>
+          </div>
+          <div class="decision-card">
+            <div class="decision-num">02</div>
+            <p class="decision-name">Consistent Type System</p>
+            <p class="decision-desc">A unified typographic scale replaced the scattered font choices of the original, making every page feel like it belongs to the same family.</p>
+          </div>
+          <div class="decision-card">
+            <div class="decision-num">03</div>
+            <p class="decision-name">Brand-Aligned Colour</p>
+            <p class="decision-desc">The palette was drawn from the café's existing identity — warm, earthy tones that feel welcoming rather than clinical or generic.</p>
+          </div>
+          <div class="decision-card">
+            <div class="decision-num">04</div>
+            <p class="decision-name">Simplified Navigation</p>
+            <p class="decision-desc">Reduced the navigation to only the five essential pages, making it easier for users to orient themselves and find what they need.</p>
+          </div>
+          <div class="decision-card">
+            <div class="decision-num">05</div>
+            <p class="decision-name">Readable Menu Layout</p>
+            <p class="decision-desc">Menu items were reorganised into scannable sections with clear pricing and descriptions, reducing the cognitive load of reading a long list.</p>
+          </div>
+          <div class="decision-card">
+            <div class="decision-num">06</div>
+            <p class="decision-name">Interactive Prototype</p>
+            <p class="decision-desc">Built as a fully clickable Figma prototype to test the flow between pages and demonstrate how users would navigate the final site.</p>
+          </div>
         </div>
       </div>
 
@@ -183,7 +268,7 @@
       <div class="content-section">
         <p class="section-label">Final Screens</p>
         <h2 class="section-title">The Redesign</h2>
-        <p class="section-body">Each page was rethought from the ground up — improving visual hierarchy, navigation clarity, and overall brand cohesion. Scroll through to see the full set of screens.</p>
+        <p class="section-body">Five pages redesigned from the ground up. Scroll through to see the full set.</p>
 
         <div class="scroll-hint">
           <span>Scroll to explore</span>
@@ -208,49 +293,29 @@
     </div>
 
     <script>
-      // Cursor
-      const cursor = document.querySelector('.custom-cursor');
-      const cursorRing = document.querySelector('.cursor-ring');
+      const cursor=document.querySelector('.custom-cursor');const cursorRing=document.querySelector('.cursor-ring');
       let mouseX=0,mouseY=0,ringX=0,ringY=0;
-      document.addEventListener('mousemove',(e)=>{
-        mouseX=e.clientX;mouseY=e.clientY;
-        cursor.style.left=mouseX+'px';cursor.style.top=mouseY+'px';
-        if(Math.random()>0.85)createSparkle(mouseX,mouseY);
-      });
+      document.addEventListener('mousemove',(e)=>{mouseX=e.clientX;mouseY=e.clientY;cursor.style.left=mouseX+'px';cursor.style.top=mouseY+'px';if(Math.random()>0.85)createSparkle(mouseX,mouseY);});
       function animateRing(){ringX+=(mouseX-ringX)*0.15;ringY+=(mouseY-ringY)*0.15;cursorRing.style.left=(ringX-20)+'px';cursorRing.style.top=(ringY-20)+'px';requestAnimationFrame(animateRing);}
       animateRing();
       function createSparkle(x,y){const s=document.createElement('div');s.className='cursor-sparkle';s.style.left=x+'px';s.style.top=y+'px';document.body.appendChild(s);setTimeout(()=>s.remove(),800);}
-      document.querySelectorAll('a,button').forEach(el=>{
-        el.addEventListener('mouseenter',()=>{cursor.classList.add('hover');cursorRing.classList.add('hover');});
-        el.addEventListener('mouseleave',()=>{cursor.classList.remove('hover');cursorRing.classList.remove('hover');});
-      });
+      document.querySelectorAll('a,button').forEach(el=>{el.addEventListener('mouseenter',()=>{cursor.classList.add('hover');cursorRing.classList.add('hover');});el.addEventListener('mouseleave',()=>{cursor.classList.remove('hover');cursorRing.classList.remove('hover');});});
     </script>
 
     <script>
-      // Drag to scroll
-      const scroll = document.getElementById('screensScroll');
+      const scroll=document.getElementById('screensScroll');
       let isDown=false,startX,scrollLeft;
       scroll.addEventListener('mousedown',(e)=>{isDown=true;startX=e.pageX-scroll.offsetLeft;scrollLeft=scroll.scrollLeft;});
       scroll.addEventListener('mouseleave',()=>{isDown=false;});
       scroll.addEventListener('mouseup',()=>{isDown=false;});
-      scroll.addEventListener('mousemove',(e)=>{if(!isDown)return;e.preventDefault();const x=e.pageX-scroll.offsetLeft;const walk=(x-startX)*1.5;scroll.scrollLeft=scrollLeft-walk;});
+      scroll.addEventListener('mousemove',(e)=>{if(!isDown)return;e.preventDefault();const x=e.pageX-scroll.offsetLeft;scroll.scrollLeft=scrollLeft-(x-startX)*1.5;});
     </script>
 
     <script>
-      // Lightbox
-      const lightbox=document.getElementById('lightbox');
-      const lightboxImg=document.getElementById('lightboxImg');
-      const lightboxClose=document.getElementById('lightboxClose');
-
+      const lightbox=document.getElementById('lightbox');const lightboxImg=document.getElementById('lightboxImg');const lightboxClose=document.getElementById('lightboxClose');
       document.querySelectorAll('.screen-item img').forEach(img=>{
-        img.addEventListener('click',()=>{
-          lightboxImg.src=img.src;
-          lightboxImg.alt=img.alt;
-          lightbox.classList.add('active');
-          document.body.style.overflow='hidden';
-        });
+        img.addEventListener('click',()=>{lightboxImg.src=img.src;lightboxImg.alt=img.alt;lightbox.classList.add('active');document.body.style.overflow='hidden';});
       });
-
       function closeLightbox(){lightbox.classList.remove('active');document.body.style.overflow='';}
       lightboxClose.addEventListener('click',closeLightbox);
       lightbox.addEventListener('click',(e)=>{if(e.target===lightbox)closeLightbox();});
@@ -258,7 +323,6 @@
     </script>
 
     <script>
-      // Starfield
       const canvas=document.getElementById('starfield');const ctx=canvas.getContext('2d');
       let stars=[],shootingStars=[],scrollY=0;
       function resizeCanvas(){canvas.width=window.innerWidth;canvas.height=window.innerHeight;initStars();}
@@ -274,13 +338,9 @@
     </script>
 
     <script>
-      // Scroll progress
-      const progressLine=document.querySelector('.progress-line');
-      const progressGlow=document.querySelector('.progress-glow');
+      const progressLine=document.querySelector('.progress-line');const progressGlow=document.querySelector('.progress-glow');
       function updateProgress(){const pct=(window.pageYOffset/(document.documentElement.scrollHeight-window.innerHeight))*100;progressLine.style.height=pct+'%';progressGlow.style.opacity=pct>2?'1':'0';progressGlow.style.bottom=(100-pct)+'%';}
-      window.addEventListener('scroll',updateProgress);
-      window.addEventListener('resize',updateProgress);
-      updateProgress();
+      window.addEventListener('scroll',updateProgress);window.addEventListener('resize',updateProgress);updateProgress();
     </script>
   </body>
 </html>
