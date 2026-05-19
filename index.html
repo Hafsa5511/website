@@ -155,6 +155,136 @@
       .lightbox.active img { transform:scale(1); }
       .lightbox-close { position:fixed; top:32px; right:60px; font-size:40px; color:rgba(255,169,88,1); background:none; border:none; z-index:100000; transition:transform 0.3s,color 0.3s; font-weight:300; line-height:1; }
       .lightbox-close:hover { transform:rotate(90deg); color:rgba(255,215,0,1); }
+      /* =========================
+   MOBILE RESPONSIVE
+========================= */
+@media (max-width: 768px) {
+
+  * {
+    cursor: auto !important;
+  }
+
+  .custom-cursor,
+  .cursor-ring,
+  .cursor-sparkle,
+  .scroll-progress {
+    display: none !important;
+  }
+
+  body {
+    overflow-x: hidden;
+  }
+
+  .page-wrapper {
+    padding: 0 20px 80px;
+  }
+
+  /* HERO */
+  .hero {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    min-height: auto;
+    padding-top: 120px;
+    padding-bottom: 40px;
+  }
+
+  .project-title {
+    font-size: 38px;
+    line-height: 1.1;
+  }
+
+  .project-meta {
+    font-size: 12px;
+    line-height: 1.7;
+  }
+
+  .hero-intro,
+  .section-body,
+  .text-block p,
+  .decision-desc {
+    font-size: 15px;
+    line-height: 1.9;
+  }
+
+  .project-links {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .project-link {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .project-role {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .hero-video {
+    border-radius: 16px;
+  }
+
+  /* SECTIONS */
+  .content-section {
+    padding: 60px 0;
+  }
+
+  .section-title {
+    font-size: 28px;
+    line-height: 1.2;
+  }
+
+  /* TWO COLUMN TEXT */
+  .two-col-text {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  /* DECISION CARDS */
+  .decisions-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* SCREENS */
+  .screen-item {
+    height: 500px;
+  }
+
+  .screen-item img {
+    height: 100%;
+    width: auto;
+  }
+
+  .screens-scroll {
+    gap: 14px;
+    padding-bottom: 10px;
+  }
+
+  /* BUTTONS */
+  .close-btn {
+    top: 24px;
+    right: 24px;
+    font-size: 34px;
+  }
+
+  .lightbox-close {
+    top: 20px;
+    right: 24px;
+    font-size: 34px;
+  }
+
+  /* IMAGES / VIDEO */
+  img,
+  video {
+    max-width: 100%;
+    height: auto;
+  }
+
+  canvas#starfield {
+    opacity: 0.7;
+  }
+}
     </style>
   </head>
   <body>
